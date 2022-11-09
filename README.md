@@ -8,7 +8,7 @@
 
 ## Systems Architecture
 
-<img src="https://raw.githubusercontent.com/seabornjr/trackify-fec/23504c74dd0b8f4700b97f525e24193dd082a7e8/Trackify.drawio.svg">
+<img src="https://raw.githubusercontent.com/seabornjr/trackify-fec/890b4e32bd4883829633e2fa1090a3ca6ceac33d/Trackify.drawio.svg">
 
 # This is a PERN application using the following external packages:
 
