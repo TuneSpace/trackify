@@ -1,5 +1,5 @@
 import "bootswatch/dist/slate/bootstrap.min.css";
-import React from "react";
+import { React, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigationbar from "./components/Navigationbar";
 import Browse from "./Pages/Browse";
@@ -9,6 +9,10 @@ import Profile from "./Pages/Profile";
 
 
 function App() {
+  useEffect(() => {
+     //const url=""
+  }, []);
+
   return (
     <div>
       <Navigationbar />
