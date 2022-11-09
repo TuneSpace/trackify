@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Container, Form, InputGroup } from 'react-bootstrap'
 import Results from '../components/Results'
 
-const Browse = () => {
+const Browse = ({tracks}) => {
   return (
     <div>
         <Container fluid="md">
@@ -17,7 +17,7 @@ const Browse = () => {
             </InputGroup>
         </Container>
         <Container>
-            <Results />
+            <Results tracks={tracks}/>
         </Container>
     </div>
   )
