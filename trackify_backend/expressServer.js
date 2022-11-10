@@ -54,9 +54,12 @@ app.post('/user/tracks', (req, res) => {
         client.query(`INSERT INTO favoritestable (user_id, track_id) VALUES ('${newFavUserId}', '${newFavTrackId}')`)
         .then(res.send(() => res.statusCode(200)))
     } catch (error) {
-        res.statusCode(500).send(error)
+        res.status(500)
+        res.send(error)
     }
 });
+
+//add login verification route
 
 app.listen(PORT, () => {
     console.log(`listening on ${PORT}`)
