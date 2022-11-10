@@ -6,17 +6,17 @@ import Browse from "./Pages/Browse";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 
-
-
 function App() {
   return (
     <div>
       <Navigationbar />
       <Routes>
-      <Route exact path='/' element={<Home/>}> </Route>
-      <Route path='/Browse' element={<Browse />}></Route>
-      <Route path='/Home' element={<Home/>}></Route>
-      <Route path='/Profile' element={<Profile />}></Route>
+        <Route exact path="/" element={<Home />}>
+          {" "}
+        </Route>
+        <Route path="/Browse" element={<Browse />}></Route>
+        <Route path="/Home" element={<Home />}></Route>
+        <Route path="/Profile" element={<Profile />}></Route>
       </Routes>
     </div>
   );
