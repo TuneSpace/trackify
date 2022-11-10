@@ -37,7 +37,7 @@ function App() {
         <Route exact path="/" element={<Home />}>
           {" "}
         </Route>
-        <Route path="/Browse" element={<Browse />}></Route>
+        <Route path="/Browse" element={<Browse tacks={tracks}/>}></Route>
         <Route path="/Home" element={<Home />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
       </Routes>
