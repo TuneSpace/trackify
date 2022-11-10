@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Container, Form, InputGroup } from 'react-bootstrap'
 import Results from '../components/Results'
 
+//Create Structure for the Browse Page
 const Browse = ({tracks}) => {
   return (
     <div>
