@@ -6,8 +6,6 @@ import Browse from "./Pages/Browse";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 
-
-
 function App() {
   const [tracks, setTracks] = useState([]);
 
@@ -35,10 +33,13 @@ function App() {
     <div>
       <Navigationbar />
       <Routes>
-      <Route exact path='/' element={<Home/>}> </Route>
-      <Route path='/Browse' element={<Browse tracks={tracks} />}></Route>
-      <Route path='/Home' element={<Home/>}></Route>
-      <Route path='/Profile' element={<Profile />}></Route>
+
+        <Route exact path="/" element={<Home />}>
+          {" "}
+        </Route>
+        <Route path="/Browse" element={<Browse />}></Route>
+        <Route path="/Home" element={<Home />}></Route>
+        <Route path="/Profile" element={<Profile />}></Route>
       </Routes>
     </div>
   );
