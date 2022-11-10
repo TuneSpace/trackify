@@ -1,5 +1,5 @@
 import "bootswatch/dist/slate/bootstrap.min.css";
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigationbar from "./components/Navigationbar";
 import Browse from "./Pages/Browse";
@@ -19,7 +19,7 @@ function App() {
           }
         };
         
-        fetch('https://spotify23.p.rapidapi.com/search/?q=genre%20&type=multi&offset=0&limit=10&numberOfTopResults=5', options)
+        fetch('https://spotify23.p.rapidapi.com/search/?q=beyonce%20&type=multi&offset=0&limit=10&numberOfTopResults=5', options)
           .then(response => response.json())
           .then(response => setTracks(response.tracks.items))
           .catch(err => console.error(err));
@@ -33,11 +33,9 @@ function App() {
     <div>
       <Navigationbar />
       <Routes>
-
-        <Route exact path="/" element={<Home />}>
-          {" "}
+        <Route exact path="/" element={<Home />}> {" "}
         </Route>
-        <Route path="/Browse" element={<Browse tacks={tracks}/>}></Route>
+        <Route path="/Browse" element={<Browse tracks={tracks}/>}></Route>
         <Route path="/Home" element={<Home />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
       </Routes>
