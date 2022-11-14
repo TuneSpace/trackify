@@ -25,7 +25,16 @@ app.get('/user/tracks', (req, res) => {
 })
 
 // Get all user info
-// app.get('/user')
+app.get('/user/info', (req, res) => {
+    try {
+        const username = req.body.username
+        client.query(`SELECT * FROM usertable WHERE username='${username}'`).then(
+            result => res.status(200).send(result.rows)
+        )
+    } catch (error) {
+        res.send(error)
+    }
+})
 
 
 
