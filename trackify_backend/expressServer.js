@@ -12,7 +12,7 @@ const client = new Client({
     connectionString: config.connectionString
 });
 
-client.connect();
+//client.connect();
 
 //Get all favorited tracks by user id
 app.get('/user/tracks', (req, res) => {
@@ -48,6 +48,7 @@ app.post('/user', (req, res) => {
 
 //post tracks to favoritestable 
 app.post('/user/tracks', (req, res) => {
+    console.log(req.body);
     try {
         const newFavUserId  = req.body.user_id;
         const newFavTrackId = req.body.track_id;

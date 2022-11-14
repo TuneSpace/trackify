@@ -3,9 +3,11 @@ import { useState } from "react";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [userId, setUserId] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setUserId(email);
     console.log(email);
   };
 
@@ -37,7 +39,8 @@ const Login = (props) => {
       >
         Don't have an account? Register Here
       </button>
-    </div>
+      </div>
+    
   );
 };
 

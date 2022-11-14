@@ -1,6 +1,9 @@
 import React from 'react'
 import { Card, CardGroup, Container } from 'react-bootstrap'
+import { GrFavorite } from 'react-icons/gr'
 
+
+const APIURL = 'http://localhost:8000'
 const Results = ({tracks}) => {
 
    //console.log("Our tracks array for your reference", {tracks})
@@ -13,6 +16,19 @@ const Results = ({tracks}) => {
                 <div id='results-card' style={{padding:"10px"}} key={track.data.id}>
 
                     <Card border="success" style={{ width: '18rem' }}>
+                   <GrFavorite fontSize={30} id='favicon' style={{padding:"5px"}} 
+                    onClick={() => {
+                      console.log(track.data.id);
+                       const options = {
+                          method: 'POST',
+                          headers:{ 'Content-Type': 'application/JSON'},
+                          body: JSON.stringify({
+                            user_id: 78,
+                            track_id: track.data.id})
+                          } 
+                          fetch(`${APIURL}/user/tracks`, options)
+                      }}
+                   />
                     <Card.Img variant="top" src={track.data.albumOfTrack.coverArt.sources[0].url} />
                     <Card.Body>
                     <Card.Title>{track.data.name}</Card.Title>

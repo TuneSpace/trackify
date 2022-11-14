@@ -40,7 +40,7 @@ const Browse = () => {
             <InputGroup className="mb-3" >
             <Button variant="outline-secondary" id="button-addon1" onClick={handleSubmit} >Search</Button>
             <Form.Control
-            defaultValue="Enter a Artist or Track Name"
+            placeholder="Enter a Artist or Track Name"
             type="text"
             
             name="searchValue"
