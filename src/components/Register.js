@@ -1,5 +1,4 @@
 import { useState } from "react";
-//gfdgfd
 
 const Register = (props) => {
   const [email, setEmail] = useState("");

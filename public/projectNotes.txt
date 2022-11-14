@@ -4,9 +4,19 @@ Team Name - Team Trackify
 Product Name - Track-ify 
 Kanban Board Link https://trello.com/invite/b/wm9Am5K9/ATTIc4075b86ec33b3e8e9b87d55d4e79368830D5E1D/trackify-fec 
 Repositor(y/ies) https://github.com/seabornjr/trackify-fec 
+
+
+
+
 Product Description:
 
 Are you a music lover? 
 Do you constantly brag to your friends that you have impecable taste in song selection? 
 
 Well we have just the app for you. 
+
+Trackify is a web appication that allows a user to browse for the latest hits and catalog them into 
+a list of favorites. As a bonus the app will also allow the user to stream 30 second previews of the music. 
+(future versions will allow full streaming as we build out our internal music database) 
+
+
