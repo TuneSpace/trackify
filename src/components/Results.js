@@ -3,7 +3,7 @@ import { Card, CardGroup, Container } from 'react-bootstrap'
 
 const Results = ({tracks}) => {
 
-   console.log("Our tracks array for your reference", {tracks})
+   //console.log("Our tracks array for your reference", {tracks})
    
   return (
     <div>

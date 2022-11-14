@@ -15,7 +15,7 @@ const Browse = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const searchValue = searchInput?.current?.value
-        console.log("The user entered the following:", searchInput)
+        //console.log("The user entered the following:", searchInput)
         
             let fetchData =  (value) => {
                 const options = {
