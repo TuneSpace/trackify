@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react';
 import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import Results from '../components/Results';
@@ -46,7 +47,6 @@ const Browse = () => {
             ref={searchInput}
             aria-label="Example text with button addon"
             aria-describedby="basic-addon1"
-            
             />
             </InputGroup>
         </Container>

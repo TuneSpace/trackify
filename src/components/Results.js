@@ -11,6 +11,7 @@ const Results = ({tracks}) => {
     <CardGroup>
         {tracks.map(track => ( 
                 <div id='results-card' style={{padding:"10px"}} key={track.data.id}>
+
                     <Card border="success" style={{ width: '18rem' }}>
                     <Card.Img variant="top" src={track.data.albumOfTrack.coverArt.sources[0].url} />
                     <Card.Body>

@@ -1,5 +1,5 @@
 import "bootswatch/dist/slate/bootstrap.min.css";
-import React from "react";
+import { React, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigationbar from "./components/Navigationbar";
 import Browse from "./Pages/Browse";
@@ -7,7 +7,6 @@ import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 
 function App() {
-  
   
   return (
     <div>
