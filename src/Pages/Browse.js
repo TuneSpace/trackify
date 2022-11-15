@@ -1,18 +1,22 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import Results from '../components/Results';
+import { UserContext } from '../Context/UserContext';
 
+
+const APIURL = 'http://localhost:8000'
 //Create Structure for the Browse Page
 
 
-
 const Browse = () => {
-    
+    //destructure the stateObject to access the individual values we want to use in this file
+    const {setUser, user} = useContext(UserContext);
+    console.log('this should be info->',user, setUser);
+
+
     const [tracks, setTracks] = useState([]);
     const searchInput = useRef(null);
-    
-    
     const handleSubmit = (event) => {
         event.preventDefault();
         const searchValue = searchInput?.current?.value
@@ -33,14 +37,32 @@ const Browse = () => {
             } 
             fetchData(searchValue);
     }
+
     
+    function getUserInfo() {
+        //set the options field to grab the username from the login input field
+        const options = {
+            method: 'GET',
+            headers: {"Content-type": "application/json"},
+            body: JSON.stringify(
+                {
+                //    username: username
+                }
+            )
+        }
+
+        fetch(`${APIURL}/user/info`)
+        .then(response => response.json())
+        .then(response => console.log(response))
+    }
+
     return (
     <div>
         <Container fluid="md">
-            <InputGroup className="mb-3" >
+        <InputGroup className="mb-3" >
             <Button variant="outline-secondary" id="button-addon1" onClick={handleSubmit} >Search</Button>
             <Form.Control
-            defaultValue="Enter a Artist or Track Name"
+            placeholder="Enter a Artist or Track Name"
             type="text"
             
             name="searchValue"
@@ -48,10 +70,10 @@ const Browse = () => {
             aria-label="Example text with button addon"
             aria-describedby="basic-addon1"
             />
-            </InputGroup>
+      </InputGroup>
         </Container>
         <Container>
-            <Results tracks={tracks}/>
+            <Results tracks={tracks} />
         </Container>
     </div>
   )

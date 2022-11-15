@@ -1,12 +1,16 @@
 import { useState } from "react";
+import Browse from "../Pages/Browse";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+ 
+  //const [username, setUsername] = useState("")
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
+    console.log('the user input the following email ->',email)
   };
 
   return (
@@ -29,7 +33,9 @@ const Login = (props) => {
           placeholder="your password"
           id="password"
         />
-        <button type="submit">Log In</button>
+        <button type="submit" onClick={
+          () => <Browse email={email}/>
+        }>Log In</button>
       </form>
       <button
         className="link-btn"
@@ -37,7 +43,9 @@ const Login = (props) => {
       >
         Don't have an account? Register Here
       </button>
-    </div>
+     
+      </div>
+    
   );
 };
 
