@@ -1,5 +1,5 @@
 import "bootswatch/dist/slate/bootstrap.min.css";
-import { React, useEffect, useState } from "react";
+import { React } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigationbar from "./components/Navigationbar";
 import Browse from "./Pages/Browse";
