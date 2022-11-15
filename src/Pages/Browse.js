@@ -3,15 +3,16 @@ import React, { useRef, useState } from 'react';
 import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import Results from '../components/Results';
 
+const APIURL = 'http://localhost:8000'
 //Create Structure for the Browse Page
 
 
 
-const Browse = () => {
+const Browse = ({props}) => {
     
     const [tracks, setTracks] = useState([]);
     const searchInput = useRef(null);
-    
+    console.log(`we are accessing this from the Login Page ->`, props)
     
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -33,7 +34,25 @@ const Browse = () => {
             } 
             fetchData(searchValue);
     }
+
     
+    function getUserInfo(someprop) {
+        //set the options field to grab the username from the login input field
+        const options = {
+            method: 'GET',
+            headers: {"Content-type": "application/json"},
+            body: JSON.stringify(
+                {
+                //    username: username
+                }
+            )
+        }
+
+        fetch(`${APIURL}/user/info`)
+        .then(response => response.json())
+        .then(response => console.log(response))
+    }
+
     return (
     <div>
         <Container fluid="md">
@@ -51,7 +70,7 @@ const Browse = () => {
             </InputGroup>
         </Container>
         <Container>
-            <Results tracks={tracks}/>
+            <Results tracks={tracks} />
         </Container>
     </div>
   )
