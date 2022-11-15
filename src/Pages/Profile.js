@@ -1,8 +1,11 @@
 import React from 'react'
+import Favorites from '../components/Favorites'
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>Profile
+    <Favorites />
+    </div>
   )
 }
 

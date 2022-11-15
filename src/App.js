@@ -7,6 +7,8 @@ import Browse from "./Pages/Browse";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 
+
+
 function App(props) {
   console.log('App.js Login does this ->',Login,"App.js props does this ->", Login["email"]);
   return (
@@ -15,7 +17,7 @@ function App(props) {
       <Routes>
         <Route exact path="/" element={<Home />}> {" "}
         </Route>
-        <Route path="/Browse" element={<Browse />}></Route>
+        <Route path="/Browse/*" element={<Browse tracks={props.tracks}/>}></Route>
         <Route path="/Home" element={<Home />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
       </Routes>

@@ -2,19 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
+import UserContextProvider from './Context/UserContext';
 import './index.css';
-//STORE is the global state that holds all of the data from the applicaiton
-
-
-//ACTION -> describes what we want to do 
-
-//REDUCER -> describe how actions transfer one state to another
-
+//ensure you import the UserContextProvider
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router>
-    <App />
+
+  //Make the context globally available by wrapping the App(Parent) component in the context provider
+ <UserContextProvider >
+   <Router>
+  <App />
   </Router>
+</UserContextProvider>
 );
 
