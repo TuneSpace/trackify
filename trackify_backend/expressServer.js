@@ -12,7 +12,7 @@ const client = new Client({
     connectionString: config.connectionString
 });
 
-//client.connect();
+client.connect();
 
 //Get all favorited tracks by user id
 app.get('/user/tracks', (req, res) => {
@@ -57,15 +57,15 @@ app.post('/user', (req, res) => {
 
 //post tracks to favoritestable 
 app.post('/user/tracks', (req, res) => {
-    console.log(req.body);
+    console.log("this is the request body -->", req.body);
+    
     try {
         const newFavUserId  = req.body.user_id;
         const newFavTrackId = req.body.track_id;
         client.query(`INSERT INTO favoritestable (user_id, track_id) VALUES ('${newFavUserId}', '${newFavTrackId}')`)
-        .then(res.send(() => res.statusCode(200)))
+        .then(res.status(201).send('Track Added'))
     } catch (error) {
-        res.status(500)
-        res.send(error)
+        console.log('error: ', error);
     }
 });
 

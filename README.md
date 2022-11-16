@@ -1,10 +1,10 @@
-
-
-
-## WireFrame for this project 
+## WireFrame for this project
 
 <img src="https://s3.amazonaws.com/assets.mockflow.com/app/wireframepro/company/C2961fe57b990450a863d0143b9a726ef/projects/MyplBBvryob/pages/991f652b147e4fccae31b7e9c603c06c/image/991f652b147e4fccae31b7e9c603c06c.png?1668010002887" />
 
+## Component Heirarchy
+
+<img src="https://raw.githubusercontent.com/seabornjr/trackify-fec/56ff52b824aac619d5bbe38881b398b6b34dccab/ComponentHeirarchy.drawio.svg" >
 
 ## Systems Architecture
 
@@ -16,7 +16,7 @@ Frontend:
 npm install react
 npm install react-router-dom
 npm install react-bootstrap
-npm install bootswatch 
+npm install bootswatch
 
 Backend:
-npm install -i, express, cors, pg 
+npm install -i, express, cors, pg
