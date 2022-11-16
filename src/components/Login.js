@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Browse from "../Pages/Browse";
+import Register from "./Register";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -36,15 +37,12 @@ const Login = (props) => {
         <button type="submit" onClick={
           () => <Browse email={email}/>
         }>Log In</button>
+       <Register className="REGFORM"/>
       </form>
-      <button
-        className="link-btn"
-        onClick={() => props.onFormSwitch("register")}
-      >
-        Don't have an account? Register Here
-      </button>
+
      
-      </div>
+    </div>
+    
     
   );
 };
