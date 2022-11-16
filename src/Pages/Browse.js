@@ -1,8 +1,7 @@
 
-import React, { useContext, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import Results from '../components/Results';
-import { UserContext } from '../Context/UserContext';
 
 
 //const APIURL = 'http://localhost:8000'
@@ -10,9 +9,8 @@ import { UserContext } from '../Context/UserContext';
 
 
 const Browse = () => {
-    //destructure the stateObject to access the individual values we want to use in this file
-    const {setUser, user} = useContext(UserContext);
-    console.log('this should be info->',user, setUser);
+    
+    
 
 
     const [tracks, setTracks] = useState([]);
