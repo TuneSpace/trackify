@@ -7,5 +7,6 @@
     "passcode",
     "Trackify",
     "usertable"
-  ]
+  ],
+  "githubPullRequests.ignoredPullRequestBranches": ["master"]
 }
