@@ -5,7 +5,7 @@ import Results from '../components/Results';
 import { UserContext } from '../Context/UserContext';
 
 
-const APIURL = 'http://localhost:8000'
+//const APIURL = 'http://localhost:8000'
 //Create Structure for the Browse Page
 
 
@@ -18,7 +18,7 @@ const Browse = () => {
     const [tracks, setTracks] = useState([]);
     const searchInput = useRef(null);
     const handleSubmit = (event) => {
-        event.preventDefault();
+        //event.preventDefault();
         const searchValue = searchInput?.current?.value
         //console.log("The user entered the following:", searchInput)
         
@@ -39,22 +39,14 @@ const Browse = () => {
     }
 
     
-    function getUserInfo() {
-        //set the options field to grab the username from the login input field
-        const options = {
-            method: 'GET',
-            headers: {"Content-type": "application/json"},
-            body: JSON.stringify(
-                {
-                //    username: username
-                }
-            )
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleSubmit();
+          console.log('Submitted Search with Enter key')
         }
-
-        fetch(`${APIURL}/user/info`)
-        .then(response => response.json())
-        .then(response => console.log(response))
-    }
+      }
+    
+   
 
     return (
     <div>
@@ -64,7 +56,7 @@ const Browse = () => {
             <Form.Control
             placeholder="Enter a Artist or Track Name"
             type="text"
-            
+            onKeyDown={handleKeyDown}
             name="searchValue"
             ref={searchInput}
             aria-label="Example text with button addon"
