@@ -38,3 +38,16 @@ button {
   color: black;
   ;
 }
+
+.favorties {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item {
+  width: 100px;
+  padding: 5px;
+  border-radius: 4px;
+
+}
