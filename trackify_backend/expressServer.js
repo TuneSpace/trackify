@@ -15,25 +15,48 @@ const client = new Client({
 client.connect();
 
 //Get all favorited tracks by user id
-app.get('/user/tracks', (req, res) => {
-    const {user_id} = req.body
-    client.query(`SELECT * FROM favoritestable WHERE user_id=${Number(user_id)}`)
+app.get('/user:id', (req, res) => {
+    const user_id = req.params.id
+    client.query(`SELECT * FROM favoritestable WHERE user_id='${Number(user_id)}'`)
     .then(result => {
         res.status(200)
         res.send(result.rows)
     })
 })
 
-// Get all user info
+// Get all user info only if password compare is true
 app.get('/user/info', (req, res) => {
-    try {
-        const email = req.body.email
-        client.query(`SELECT * FROM usertable WHERE email='${email}'`).then(
-            result => res.status(200).send(result.rows)
-        )
-    } catch (error) {
-        res.send(error)
-    }
+    const email = req.body.email;
+    let inputPassword = req.body.passcode
+    let dbPassword;
+    client.query(`SELECT passcode FROM usertable WHERE email='${email}'`, (err, result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            dbPassword = result.rows[0].passcode;
+            // console.log('This is the user input pass -->', typeof inputPassword, inputPassword);
+            // console.log('This is the DB pass -->', typeof dbPassword, dbPassword);
+            bcrypt.compare(inputPassword, dbPassword, (err, result) => {
+                if(err) {
+                    console.log('bcrpyt error: ', err);
+                    res.status(500).send('Bcrypt Error: Database/Hash error');
+                } else if (result) {
+                    // console.log(result)
+                    client.query(`SELECT * FROM usertable WHERE email='${email}'`)
+                    .then((user) => {
+                        res.status(200).send(user.rows);
+                    })
+                } else {
+                    // console.log(result);
+                    res.status(400).send('Input Error: Input password does not match');
+                }
+            })
+
+        }
+
+    })
+            
+       
 })
 
 
@@ -47,11 +70,11 @@ app.post('/user', (req, res) => {
     console.log(passcode)
     const saltRounds = 10;
     bcrypt.genSalt(saltRounds, function(err, salt) {
-    bcrypt.hash(passcode, salt, function(err, hash) {
-        client.query(`INSERT INTO usertable (username, passcode, email, avatar) VALUES ('${username}', '${hash}', '${email}', '${avatar}')`)
-        .then(() => res.status(201).send('Created Password'))
-        .catch((error) => console.log(error))
-    });
+        bcrypt.hash(passcode, salt, function(err, hash) {
+            client.query(`INSERT INTO usertable (username, passcode, email, avatar) VALUES ('${username}', '${hash}', '${email}', '${avatar}')`)
+            .then(() => res.status(201).send('Created Password'))
+            .catch((error) => console.log(error))
+        });
     });  
 })
 

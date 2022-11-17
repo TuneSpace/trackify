@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../Context/UserContext";
 import Browse from "../Pages/Browse";
 import Register from "./Register";
 
+
+
+
+
 const Login = (props) => {
+  const {APIURL, userState, setUserState, imageUrl, setImageUrl} = useContext(UserContext);
+ 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
  
@@ -11,8 +18,36 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    getUserData();
     console.log('the user input the following email ->',email)
   };
+
+
+  const getUserData = () => {
+      let loginEmail;
+      //Verify the password matches with the database, un hash first
+
+        //fetch the user data from the database based of email input in textbox
+        fetch(`${APIURL}/user/info`, {
+          method: 'GET',
+          body: JSON.stringify(loginEmail),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          },
+        })
+        .then((res) => res.json())
+        .then((userData) => {
+          //set the userState to the result of that fetch
+          setUserState({
+          id: userData.id,
+          username: userData.username,
+          email: userData.email,
+          isLoggedIn: true
+          });
+          setImageUrl(userData.avatar);
+        })
+
+  }
 
   return (
     <div className="auth-form-container">
@@ -44,7 +79,7 @@ const Login = (props) => {
     </div>
     
     
-  );
+  ) 
 };
 
 export default Login;
