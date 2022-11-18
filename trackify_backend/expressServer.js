@@ -48,6 +48,7 @@ app.post('/user/info', (req, res) => {
                     // console.log(result)
                     client.query(`SELECT * FROM usertable WHERE email='${email}'`)
                     .then((user) => {
+                        user.rows[0].isLoggedIn = true;
                         res.status(200).send(user.rows);
                     })
                 } else {
