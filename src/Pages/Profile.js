@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Favorites from "../components/Favorites";
+import { UserContext } from "../Context/UserContext";
+
 
 const Profile = () => {
+
+  const {userState} = useContext(UserContext);
+  console.log('this should be userstate ->', userState)
+
+
   return (
     <div style={{ maxWidth: "650px", margin: "0px auto" }}>
       <div
@@ -20,7 +27,7 @@ const Profile = () => {
           />
         </div>
         <div>
-          <h4>Dre123</h4>
+          <h4>{userState.username}</h4>
           <div
             style={{
               display: "flex",
