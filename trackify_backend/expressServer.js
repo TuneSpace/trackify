@@ -3,7 +3,7 @@ const app = express()
 const { Client } = require('pg');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
-const config = require('./config.json')[process.env.NODE_ENV || "dev"];
+const config = require('../public/manifest.json')[process.env.NODE_ENV || "dev"];
 const PORT = config.server;
 app.use(express.json());
 app.use(cors());
@@ -28,9 +28,10 @@ app.get('/user/:id', (req, res) => {
 })
 
 // Get all user info only if password compare is true
-app.get('/user/info', (req, res) => {
+app.post('/user/info', (req, res) => {
+    
     const email = req.body.email;
-    let inputPassword = req.body.passcode
+    let inputPassword = req.body.pass;
     let dbPassword;
     client.query(`SELECT passcode FROM usertable WHERE email='${email}'`, (err, result) => {
         if(err) {
@@ -42,7 +43,7 @@ app.get('/user/info', (req, res) => {
             bcrypt.compare(inputPassword, dbPassword, (err, result) => {
                 if(err) {
                     console.log('bcrpyt error: ', err);
-                    res.status(500).send('Bcrypt Error: Database/Hash error');
+                    res.status(500).json('Bcrypt Error: Database/Hash error');
                 } else if (result) {
                     // console.log(result)
                     client.query(`SELECT * FROM usertable WHERE email='${email}'`)
@@ -51,7 +52,7 @@ app.get('/user/info', (req, res) => {
                     })
                 } else {
                     // console.log(result);
-                    res.status(400).send('Input Error: Input password does not match');
+                    res.status(400).json('Input Error: Input password does not match');
                 }
             })
 
@@ -75,7 +76,7 @@ app.post('/user', (req, res) => {
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(passcode, salt, function(err, hash) {
             client.query(`INSERT INTO usertable (username, passcode, email, avatar) VALUES ('${username}', '${hash}', '${email}', '${avatar}')`)
-            .then(() => res.status(201).send('Created Password'))
+            .then(() => res.status(201).json('Created Password'))
             .catch((error) => console.log(error))
         });
     });  
@@ -93,7 +94,7 @@ app.post('/user/tracks', (req, res) => {
         const newFavTrackiPlayerId = req.body.iPlayerId;
         const newFavTrackSpotify = req.body.spotify_url;
         client.query(`INSERT INTO favoritestable (user_id, track_id, imageUrl, track_name, iPlayerId, spotify_url ) VALUES ('${newFavUserId}', '${newFavTrackId}', '${newFavTrackImage}', '${newFavTrackName}', '${newFavTrackiPlayerId}' , '${newFavTrackSpotify}')`)
-        .then(res.status(201).send('Track Added'))
+        .then(res.status(201).json('Track Added'))
     } catch (error) {
         console.log('error: ', error);
     }
