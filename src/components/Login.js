@@ -26,27 +26,37 @@ const Login = (props) => {
 
 
   const getUserData = () => {
-      let loginEmail;
+      let loginObj = {
+        email,
+        pass
+      }
       //Verify the password matches with the database, un hash first
 
         //fetch the user data from the database based of email input in textbox
-        fetch(`${APIURL}/user/info`, {
-          method: 'GET',
-          body: JSON.stringify(loginEmail),
+        fetch(`http://localhost:8000/user/info`, {
+          method: 'POST',
+          mode: "cors",
           headers: {
-            "Content-type": "application/json; charset=UTF-8"
+            "Content-type": "application/json; charset=UTF-8",
           },
+          body: JSON.stringify(loginObj)
         })
         .then((res) => res.json())
         .then((userData) => {
           //set the userState to the result of that fetch
-          setUserState({
-          id: userData.id,
-          username: userData.username,
-          email: userData.email,
-          isLoggedIn: true
-          });
-          setImageUrl(userData.avatar);
+          if(typeof userData == 'string') {
+            console.log(userData);
+            alert(userData);
+          } else {
+            setUserState(() => {
+              userState.id = userData[0].id;
+              userState.username = userData[0].username;
+              userState.email = userData[0].email;
+              userState.isLoggedIn = true
+            });
+            console.log('user logged in -->', userState);
+            setImageUrl(imageUrl = userData[0].avatar);
+          } 
         })
 
   }
