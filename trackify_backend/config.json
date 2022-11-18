@@ -1,6 +1,6 @@
 {
     "dev":{
-    "connectionString":"postgres://postgres:postgrespw@localhost:55000/trackify",
+    "connectionString":"postgres://postgres:postgrespw@localhost:55001/trackify",
     "server": 8000
 }, 
 

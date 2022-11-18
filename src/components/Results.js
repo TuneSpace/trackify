@@ -24,7 +24,7 @@ const Results = ({tracks}) => {
                     <Card border="success" style={{ width: '18rem' }}>
                     
                     {/* this dynamically renders a heart so we can break it*/}
-                    <svg stroke="currentColor"  fill="currentColor" stroke-width="0" viewBox="0 0 24 24" font-size="30" id="favicon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{padding: "5px"}}
+                    <svg stroke="currentColor"  fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" fontSize="30" id="favicon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{padding: "5px"}}
                     //this onclick adds to favorites table and changes the color of the heart
                     onClick={(e) => { 
                                       console.log("sending the following data to the  favorites table->","user id:", userState.id, "track id:",track.data.id);
@@ -35,7 +35,11 @@ const Results = ({tracks}) => {
                                         headers:{ 'Content-Type': 'application/JSON'},
                                         body: JSON.stringify({
                                           user_id: userState.id,
-                                          track_id: track.data.id})
+                                          track_id: track.data.id,
+                                          track_name: track.data.albumOfTrack.name,
+                                          iPlayerId: track.data.albumOfTrack.id,
+                                          imageUrl: track.data.albumOfTrack.coverArt.sources[0].url,
+                                          spotify_url: track.data.albumOfTrack.sharingInfo.shareUrl})
                                         } 
 
                                      //this fetch adds the trackid and userid to the favorites table
@@ -46,7 +50,7 @@ const Results = ({tracks}) => {
                                      heartPath.setAttribute("fill", "green")
                                       }}
                   
-                    ><path fill="none" id="path" stroke="#000" stroke-width="2" d="M1,8.4 C1,4 4.5,3 6.5,3 C9,3 11,5 12,6.5 C13,5 15,3 17.5,3 C19.5,3 23,4 23,8.4 C23,15 12,21 12,21 C12,21 1,15 1,8.4 Z"
+                    ><path fill="none" id="path" stroke="#000" strokeWidth="2" d="M1,8.4 C1,4 4.5,3 6.5,3 C9,3 11,5 12,6.5 C13,5 15,3 17.5,3 C19.5,3 23,4 23,8.4 C23,15 12,21 12,21 C12,21 1,15 1,8.4 Z"
                     ></path></svg>
 
                     

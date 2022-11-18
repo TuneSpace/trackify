@@ -15,9 +15,10 @@ const client = new Client({
 client.connect();
 
 //Get all favorited tracks by user id
-app.get('/user/tracks', (req, res) => {
-    const {user_id} = req.body
-    client.query(`SELECT * FROM favoritestable WHERE user_id=${Number(user_id)}`)
+app.get('/user/:id', (req, res) => {
+    const user_id = req.params.id
+    console.log(user_id)
+    client.query(`SELECT * FROM favoritestable WHERE user_id='${user_id}'`)
     .then(result => {
         res.status(200)
         res.send(result.rows)
@@ -44,7 +45,7 @@ app.post('/user', (req, res) => {
     const { username } = req.body;
     const { avatar } = req.body;
     const { email } = req.body;
-    console.log(passcode)
+    
     const saltRounds = 10;
     bcrypt.genSalt(saltRounds, function(err, salt) {
     bcrypt.hash(passcode, salt, function(err, hash) {
@@ -62,7 +63,11 @@ app.post('/user/tracks', (req, res) => {
     try {
         const newFavUserId  = req.body.user_id;
         const newFavTrackId = req.body.track_id;
-        client.query(`INSERT INTO favoritestable (user_id, track_id) VALUES ('${newFavUserId}', '${newFavTrackId}')`)
+        const newFavTrackImage = req.body.imageUrl;
+        const newFavTrackName = req.body.track_name;
+        const newFavTrackiPlayerId = req.body.iPlayerId;
+        const newFavTrackSpotify = req.body.spotify_url;
+        client.query(`INSERT INTO favoritestable (user_id, track_id, imageUrl, track_name, iPlayerId, spotify_url ) VALUES ('${newFavUserId}', '${newFavTrackId}', '${newFavTrackImage}', '${newFavTrackName}', '${newFavTrackiPlayerId}' , '${newFavTrackSpotify}')`)
         .then(res.status(201).send('Track Added'))
     } catch (error) {
         console.log('error: ', error);
