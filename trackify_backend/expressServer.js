@@ -27,6 +27,15 @@ app.get('/user/:id', (req, res) => {
     })
 })
 
+
+app.patch('/user', (req, res) => {
+    const {username} = req.body.username;
+    const {avatar} = req.body.avatar;
+    client.query('UPDATE usertable SET avatar = $1 WHERE username = $2 RETURNING avatar', [avatar, username])
+        .then(result => res.status(201).send(result.rows))
+        .catch(error => res.send(error))
+})
+
 // Get all user info only if password compare is true
 app.post('/user/info', (req, res) => {
     

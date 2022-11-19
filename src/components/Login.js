@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { Form } from "react-bootstrap";
 import { UserContext } from "../Context/UserContext";
 import Browse from "../Pages/Browse";
 import Register from "./Register";
@@ -10,7 +9,7 @@ import Register from "./Register";
 
 const Login = (props) => {
 
-  const {APIURL, userState, setUserState, imageUrl, setImageUrl} = useContext(UserContext);
+  const {APIURL, userState, setUserState, setImageUrl} = useContext(UserContext);
 
  
   const [email, setEmail] = useState("");
@@ -63,9 +62,8 @@ const Login = (props) => {
     <h2 style={{textAlign:'center'}}>Please Log In</h2>
     <div className="auth-form-container">
       
-      <Form className="login-form" onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label >Email</Form.Label>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <label >Email</label>
         <input
           type="email"
           value={email}
@@ -81,13 +79,13 @@ const Login = (props) => {
           placeholder="your password"
           id="password"
         />
-        <br />
+        
         <button type="submit" onClick={
           () => <Browse email={email}/>
         }>Log In</button>
        <Register className="REGFORM"/>
-       </Form.Group>
-      </Form>
+      
+      </form>
 
      
     </div>

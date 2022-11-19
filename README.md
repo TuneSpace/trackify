@@ -17,6 +17,7 @@ npm install react
 npm install react-router-dom
 npm install react-bootstrap
 npm install bootswatch
-
+npm install primereact primeicons
+npm install react-avatar-edit
 Backend:
 npm install -i, express, cors, pg

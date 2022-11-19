@@ -32,7 +32,7 @@ const Favorites = () => {
         drag: "free",
         arrows: false,
         
-        perPage: 2,
+        perPage: 1,
         autoScroll: {
           pauseOnHover: true,
           pauseOnFocus: false,
