@@ -32,7 +32,7 @@ const Favorites = () => {
         drag: "free",
         arrows: false,
         
-        perPage: 2,
+        perPage: 1,
         autoScroll: {
           pauseOnHover: true,
           pauseOnFocus: false,
@@ -51,7 +51,7 @@ const Favorites = () => {
              <>
            <SplideSlide>
              
-             <iframe style={{borderRadius: "12px"}} src={`https://open.spotify.com/embed/album/${track.iplayerid}`} width="100%" height="100%" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title={track.track_name}></iframe>
+             <iframe style={{borderRadius: "12px"}} src={`https://open.spotify.com/embed/album/${track.iplayerid}`} width="98%" height="98%" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title={track.track_name}></iframe>
              </SplideSlide>
            
              </>

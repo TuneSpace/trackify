@@ -2,7 +2,12 @@ import React from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
+
 const Navigationbar = () => {
+
+  
+
+
   return (
     <Navbar bg="light" expand="lg">
     <Container>
@@ -12,7 +17,7 @@ const Navigationbar = () => {
         <Nav className="me-auto">
 
           <LinkContainer to="/">
-          <Nav.Link >Home</Nav.Link>
+          <Nav.Link ></Nav.Link>
           </LinkContainer>
 
           <LinkContainer to="/Browse">

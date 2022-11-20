@@ -9,7 +9,7 @@ import Register from "./Register";
 
 const Login = (props) => {
 
-  const {APIURL, userState, setUserState, imageUrl, setImageUrl} = useContext(UserContext);
+  const {APIURL, userState, setUserState, setImageUrl} = useContext(UserContext);
 
  
   const [email, setEmail] = useState("");
@@ -46,26 +46,24 @@ const Login = (props) => {
           //set the userState to the result of that fetch
           if(typeof userData == 'string') {
             console.log(userData);
-            alert(userData);
+            alert('Password Incorrect, Please try again.');
           } else {
-            setUserState(() => {
-              userState.id = userData[0].id;
-              userState.username = userData[0].username;
-              userState.email = userData[0].email;
-              userState.isLoggedIn = true
-            });
+            setUserState(userData[0]);
             console.log('user logged in -->', userState);
-            setImageUrl(imageUrl = userData[0].avatar);
+            setImageUrl(userData[0].avatar);
           } 
         })
 
   }
 
   return (
+    <div>
+    <h1 style={{textAlign:'center'}}>Welcome to Trackify</h1>
+    <h2 style={{textAlign:'center'}}>Please Log In</h2>
     <div className="auth-form-container">
-      <h2>Login</h2>
+      
       <form className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
+        <label >Email</label>
         <input
           type="email"
           value={email}
@@ -81,15 +79,17 @@ const Login = (props) => {
           placeholder="your password"
           id="password"
         />
+        
         <button type="submit" onClick={
           () => <Browse email={email}/>
         }>Log In</button>
        <Register className="REGFORM"/>
+      
       </form>
 
      
     </div>
-    
+    </div>
     
   ) 
 };

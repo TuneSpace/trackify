@@ -1,7 +1,7 @@
-import { useState } from "react";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import "bootswatch/dist/slate/bootstrap.min.css";
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 const Register = (props) => {
    const [show, setShow] = useState(false);
 
@@ -27,9 +27,10 @@ const Register = (props) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+    
+      <button  onClick={handleShow}>
         Register Here
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

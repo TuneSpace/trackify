@@ -12,13 +12,13 @@ code {
     monospace;
 }
 
-.auth-form-container,
-.login-form .register-form {
-  display: flex;
+.auth-form-container {
+
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   align-content: stretch;
+  text-align:center;
 }
 
 label {
@@ -28,25 +28,37 @@ label {
   border-radius: 10px;
 }
 
+img{
+  z-index:-1
+}
+
 button {
+  transition: all .5s ease;
   border: none;
   background-color: green;
   padding: 10px;
-  border-radius: 15px;
+  border-radius: 25px;
   cursor: pointer;
-  color: black;
+  margin: 5px;
+  border: 1.5px solid black;
+
+  line-height: 1;
+    font-size: 14px;
+    padding: 10px;
+    outline: none;
+    border-radius: 4px;
   ;
 }
 
-.favorties {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+
+
+button:hover{
+  color: black;
+  text-transform: uppercase;
+ text-shadow: 1px 1px 2px silver, 0 0 1em lightgreen, 0 0 0.2em lightgreen;
 }
 
-.item {
-  width: 100px;
-  padding: 5px;
-  border-radius: 4px;
 
+.username {
+text-shadow: 1px 1px 2px green, 0 0 1em lightgreen, 0 0 0.2em lightgreen;
 }
