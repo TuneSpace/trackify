@@ -9,7 +9,7 @@ import Register from "./Register";
 
 const Login = (props) => {
 
-  const {APIURL, userState, setUserState, setImageUrl} = useContext(UserContext);
+  const { userState, setUserState, setImageUrl} = useContext(UserContext);
 
  
   const [email, setEmail] = useState("");
@@ -57,7 +57,7 @@ const Login = (props) => {
   }
 
   return (
-    <div>
+  <div>
     <h1 style={{textAlign:'center'}}>Welcome to Trackify</h1>
     <h2 style={{textAlign:'center'}}>Please Log In</h2>
     <div className="auth-form-container">
@@ -83,13 +83,14 @@ const Login = (props) => {
         <button type="submit" onClick={
           () => <Browse email={email}/>
         }>Log In</button>
-       <Register className="REGFORM"/>
+      
       
       </form>
 
      
     </div>
-    </div>
+    <Register className="REGFORM"/>
+  </div>
     
   ) 
 };
