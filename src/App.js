@@ -12,7 +12,7 @@ import Profile from "./Pages/Profile";
 
 function App(props) {
   // console.log('App.js Login does this ->',Login,"App.js props does this ->", Login["email"]);
-const {userState, setUserState}= useContext(UserContext);
+const {userState}= useContext(UserContext);
 const UserState = userState.isLoggedIn
 console.log(userState.isLoggedIn);
 
