@@ -9,8 +9,8 @@ const APIURL = 'http://localhost:8000'
 const Results = ({tracks}) => {
 
   //destructre UserContext to extract the values we need
-  const {userState, setUserState} = useContext(UserContext); 
-  console.log(userState.id, setUserState);
+  const {userState} = useContext(UserContext); 
+  console.log(tracks);
 
    
   return (

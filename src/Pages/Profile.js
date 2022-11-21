@@ -3,28 +3,32 @@ import { Dialog } from "primereact/dialog";
 import "primereact/resources/themes/vela-green/theme.css";
 import React, { useContext, useState } from "react";
 import Avatar from "react-avatar-edit";
-import img from "../43189002.jpg";
+import { Card } from "react-bootstrap";
 import Favorites from "../components/Favorites";
+import Suggestions from "../components/Suggestions";
 import { UserContext } from "../Context/UserContext";
 
 
 const Profile = () => {
   const { userState } = useContext(UserContext);
-  console.log("this should be userstate ->", userState);
+  console.log('hopefully this is the avatar-->',userState.avatar)
   const [dialogs, setdialogs] = useState(false);
-  const [imgCrop, setimgCrop] = useState(false);
-  const [storeImage, setstoreImage] = useState([]);
-  const onCrop = (view) => {
-    setimgCrop(view);
+  const [previewAvatar, setPreviewAvatar] = useState(null)
+  const [avatar, setAvatar] = useState(null)
+  
+  //use built in oncrop function to define what happens when you change the previewAvatar state
+  const onCrop = (img) => { 
+    setPreviewAvatar(img)
+   
   };
+
+  //set what you want to happens when you close the crop box
   const onClose = () => {
-    setimgCrop(null);
+    setPreviewAvatar(null)
   };
-  const saveImage = () => {
-    setstoreImage([...storeImage, { imgCrop }]);
-    setdialogs(false);
-  };
-  const profileImageShow = storeImage.map((item) => item.imgCrop);
+
+  //determine what we want to show dependent on whether there's a preview avatar
+
   return (
     <div style={{ maxWidth: "800px", margin: "3px auto" }}>
       <div
@@ -41,7 +45,6 @@ const Profile = () => {
           onHide={() => setdialogs(false)}
         >
           <Avatar width={300} height={300} onCrop={onCrop} onClose={onClose} />
-          <Button label="Save" icon="pi pi-check" onClick={saveImage} />
           <Button
             label="Upload"
             onClick={() =>
@@ -53,11 +56,15 @@ const Profile = () => {
                 },
                 body: JSON.stringify({
                   username: userState.username,
-                  avatar: storeImage,
+                  avatar: previewAvatar,
                 }),
               })
                 .then((res) => res.json())
-                .then((data) => setstoreImage(data[0].avatar))
+                .then((data) => { 
+                  sessionStorage.setItem('avatar', data[0].avatar)
+                  setAvatar(data[0].avatar)
+                  })
+
             }
           ></Button>
         </Dialog>
@@ -70,8 +77,9 @@ const Profile = () => {
               borderRadius: "50%",
               objectFit: "cover",
             }}
-            src={profileImageShow.length ? profileImageShow : img}
-            alt=""
+            //if thre's a previewAvatar, show it, if not pull the avatar from session storage
+            src={previewAvatar ? previewAvatar : sessionStorage.getItem('avatar')}
+            alt="avatar"
             onClick={() => setdialogs(true)}
           />
         </div>
@@ -88,6 +96,28 @@ const Profile = () => {
       </div>
       <h5>
         <Favorites />
+      </h5>
+      <h5>
+      <div>
+       <Card className="text-center">
+      <Card.Header>Featured</Card.Header>
+      <Card.Body>
+        <Card.Title>Trackify Suggestions</Card.Title>
+        <Card.Text>
+          Needing Inspiration? Click below to todays popular playlists via Trackify Suggestions.
+        </Card.Text>
+        <button variant="success"
+        onClick={() =>{
+       return  <Suggestions />
+
+         } }
+        
+        >Show Me Suggestions</button>
+      </Card.Body>
+      <Card.Footer className="text-muted">2 days ago</Card.Footer>
+    </Card>
+        <Suggestions />
+        </div>
       </h5>
     </div>
   );
