@@ -63,6 +63,7 @@ const Profile = () => {
                 .then((data) => { 
                   sessionStorage.setItem('avatar', data[0].avatar)
                   setAvatar(data[0].avatar)
+                  console.log('the avatar is set',avatar)
                   })
 
             }

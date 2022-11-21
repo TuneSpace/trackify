@@ -34,7 +34,7 @@ const Suggestions = () => {
     <div>
          <CardGroup >
           <Card>
-            <Card.Img variant="top" src="https://i.scdn.co/image/ab67706c0000bebb8b698cb13aae2eb29f346531" />
+            <Card.Img variant="top" src="https://axerosolutions.com/assets/Uploaded-CMS-Files/1c3bc747-fef3-4ce9-a3ae-dc94f44fbcb1.jpg" />
             <Card.Body>
               <Card.Title>Bilboard Top 100</Card.Title>
               <Card.Text> 
