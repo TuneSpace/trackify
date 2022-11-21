@@ -16,7 +16,7 @@ const Favorites = () => {
     fetch("http://localhost:8000/user/" + userState.id)
       .then((data) => data.json())
       .then((data) => { 
-         console.log(data)
+         console.log("here's whates about to go into tracksData-->",data)
         return setTracksData(data)
        
       }, []);

@@ -5,7 +5,7 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const config = require('../public/manifest.json')[process.env.NODE_ENV || "dev"];
 const PORT = config.server;
-app.use(express.json());
+app.use(express.json({limit:'100MB'}));
 app.use(cors());
 
 const client = new Client({
@@ -29,6 +29,7 @@ app.get('/user/:id', (req, res) => {
 
 
 app.patch('/user', (req, res) => {
+    console.log(req.body)
     const username = req.body.username;
     const avatar = req.body.avatar;
     client.query('UPDATE usertable SET avatar = $1 WHERE username = $2 RETURNING avatar', [avatar, username])
