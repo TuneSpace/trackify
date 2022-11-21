@@ -27,6 +27,13 @@ const Profile = () => {
     setPreviewAvatar(null)
   };
 
+  window.onclick = function(event) {
+    var modal = document.getElementById("avatar_loader-1f15-bee1-6565");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+
   //determine what we want to show dependent on whether there's a preview avatar
 
   return (

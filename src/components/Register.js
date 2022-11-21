@@ -28,7 +28,7 @@ const Register = (props) => {
   return (
     <>
     
-      <button  onClick={handleShow}>
+      <button id="register-btn" onClick={handleShow}>
         Register Here
       </button>
 
@@ -58,7 +58,7 @@ const Register = (props) => {
               placeholder="youremail@gmail.com"
               value={input.email}
               className="Email"
-            />Email
+            /> Email
             <br />
  
             <input
@@ -68,8 +68,7 @@ const Register = (props) => {
               id="password"
               value={input.passcode}
               name="passcode"
-            />
-            Password
+            /> Password
          
          
          
@@ -82,7 +81,8 @@ const Register = (props) => {
           <Button variant="primary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() =>
+          <div className="register-btn">
+          <Button  variant="primary" onClick={() =>
             fetch("http://localhost:8000/user", {
               method: "POST",
               mode: "cors",
@@ -95,6 +95,7 @@ const Register = (props) => {
           >
             Register
           </Button>
+          </div>
         </Modal.Footer>
       </Modal>
     </>

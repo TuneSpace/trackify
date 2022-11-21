@@ -39,6 +39,7 @@ button {
   cursor: pointer;
   margin: 5px;
   border: 1.5px solid black;
+  
 
   line-height: 1;
     font-size: 14px;
@@ -64,4 +65,12 @@ text-shadow: 1px 1px 2px green, 0 0 1em lightgreen, 0 0 0.2em lightgreen;
 h2 {
 
   text-align: center;
+}
+
+#register-btn {
+    margin: auto;
+    width: 100%;
+ 
+    
+  
 }
