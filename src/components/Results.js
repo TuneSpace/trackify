@@ -27,7 +27,8 @@ const Results = ({tracks}) => {
                     <svg stroke="currentColor"  fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" fontSize="30" id="favicon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{padding: "5px"}}
                     //this onclick adds to favorites table and changes the color of the heart
                     onClick={(e) => { 
-                                      console.log("sending the following data to the  favorites table->","user id:", userState.id, "track id:",track.data.id);
+                                      console.log("sending the following data to the  favorites table->","user id:",
+                                       userState.id, "track id:",track.data.id);
                                       
                                       //this defines the parameters for the fetch request below
                                       const options = {

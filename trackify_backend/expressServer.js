@@ -37,7 +37,7 @@ app.patch('/user', (req, res) => {
         .catch(error => res.send(error))
 })
 
-// Get all user info only if password compare is true
+// 3. Get all user info only if password compare is true
 app.post('/user/info', (req, res) => {
     
     const email = req.body.email;
@@ -76,7 +76,7 @@ app.post('/user/info', (req, res) => {
 
 
 
-//Post to user table
+//2. Post to user table
 app.post('/user', (req, res) => {
     const { passcode } = req.body;
     const { username } = req.body;
@@ -93,7 +93,7 @@ app.post('/user', (req, res) => {
     });  
 })
 
-//post tracks to favoritestable 
+// post tracks to favoritestable 
 app.post('/user/tracks', (req, res) => {
     console.log("this is the request body -->", req.body);
     
