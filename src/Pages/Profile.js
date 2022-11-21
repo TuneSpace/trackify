@@ -97,7 +97,8 @@ const Profile = () => {
       <h5>
         <Favorites />
       </h5>
-      <h5>
+      
+      
       <div>
        <Card className="text-center">
       <Card.Header>Featured</Card.Header>
@@ -106,19 +107,13 @@ const Profile = () => {
         <Card.Text>
           Needing Inspiration? Click below to todays popular playlists via Trackify Suggestions.
         </Card.Text>
-        <button variant="success"
-        onClick={() =>{
-       return  <Suggestions />
-
-         } }
-        
-        >Show Me Suggestions</button>
+       
       </Card.Body>
       <Card.Footer className="text-muted">2 days ago</Card.Footer>
     </Card>
-        <Suggestions />
+        
         </div>
-      </h5>
+        <Suggestions />
     </div>
   );
 };

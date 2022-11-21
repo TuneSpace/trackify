@@ -30,17 +30,18 @@ const Suggestions = () => {
   // }
     
   
-
   return (
     <div>
          <CardGroup >
           <Card>
             <Card.Img variant="top" src="https://i.scdn.co/image/ab67706c0000bebb8b698cb13aae2eb29f346531" />
             <Card.Body>
-              <Card.Title>Spotify Top 100</Card.Title>
+              <Card.Title>Bilboard Top 100</Card.Title>
               <Card.Text> 
-              The 100 most streamed songs on Spotify ever, in correct order
+              Features this week's most popular songs across all genres, ranked by radio airplay monitored by Nielsen BDS, download sales tracked by Nielsen SoundScan and streaming activity data provided by leading online music services. 
               </Card.Text>
+              <a variant="success" style={{display:'inline-block'}} href="https://open.spotify.com/playlist/6UeSakyzhiEt4NB3UAd6NQ"     
+                                                    >Go to Spotify</a>
             </Card.Body>
           </Card>
           </CardGroup>
