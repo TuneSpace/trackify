@@ -22,6 +22,7 @@ CREATE TABLE favoritestable
     spotify_url varchar(2000),
     CONSTRAINT fk_user FOREIGN KEY (user_id)
     REFERENCES usertable (id)
+    ON DELETE CASCADE
 );
 
 INSERT INTO usertable
