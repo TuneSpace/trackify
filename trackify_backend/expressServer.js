@@ -64,7 +64,7 @@ app.post('/user/info', (req, res) => {
         if(err) {
             console.log(err)
         } else {
-            dbPassword = result.rows[0].passcode;
+           dbPassword = result.rows[0].passcode;
             // console.log('This is the user input pass -->', typeof inputPassword, inputPassword);
             // console.log('This is the DB pass -->', typeof dbPassword, dbPassword);
             bcrypt.compare(inputPassword, dbPassword, (err, result) => {

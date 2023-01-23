@@ -5,6 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ 
+}
+
+.grad {
+  background-image: linear-gradient(black, green);
+}
+
+#preview-container {
+  height: 1000px;
+}
+
+#login-div {
+  height: 1000px;
 }
 
 code {
@@ -27,12 +40,46 @@ label {
   border: none;
   border-radius: 10px;
 }
+#login {
+  width: 700px;
+  background-color: black;
+  margin: auto;
+  margin-top: 30px;
+  border-radius: 20px;
+  padding: 20px;
+}
 
+#register-btn {
+  width: 100%;
+  background-color: black;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: stretch;
+  text-align:center;;
+}
+#login-btn {
+  transition: all .5s ease;
+  border: none;
+  width: 50%;
+  background-color: green;
+  padding: 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 5px;
+  border: 1.5px solid black;
 
-
+  line-height: 1;
+    font-size: 14px;
+    padding: 10px;
+    outline: none;
+    border-radius: 4px;
+  ;
+}
 button {
   transition: all .5s ease;
   border: none;
+  width: 15%;
   background-color: green;
   padding: 10px;
   border-radius: 25px;

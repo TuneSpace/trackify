@@ -7,9 +7,12 @@ const Home = () => {
 
   const toggleForm = (formName) => {
     setCurrentForm(formName);
+    
   };
+
+ 
   return (
-    <div>
+    <div id='home'>
       {currentForm === "login" ? (
         <Login onFormSwitch={toggleForm} />
       ) : (
