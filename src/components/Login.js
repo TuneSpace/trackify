@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Container } from "react-bootstrap";
 import { UserContext } from "../Context/UserContext";
 import Browse from "../Pages/Browse";
+import AppPreview from "./AppPreview";
 import Register from "./Register";
 
 
@@ -93,6 +94,9 @@ const Login = (props) => {
      
     </div>
     <Register className="REGFORM"/>
+    </Container>
+    <Container id="app-preview-container" >
+      <AppPreview />
     </Container>
   </div>
     
