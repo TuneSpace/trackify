@@ -1,5 +1,6 @@
 import "bootswatch/dist/slate/bootstrap.min.css";
 import { useState } from "react";
+import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 const Register = (props) => {
@@ -27,11 +28,11 @@ const Register = (props) => {
 
   return (
     <>
-    
-      <button  onClick={handleShow}>
+       <Container id='register-btn'>
+      <button id='login-btn' onClick={handleShow}>
         Register Here
       </button>
-
+      </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Register</Modal.Title>

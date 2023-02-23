@@ -14,11 +14,26 @@ const client = new Client({
 
 client.connect();
 
+
+app.get('/user', (req, res) => {
+    try {
+        client.query('SELECT * FROM usertable;')
+        .then(result =>{
+            res.status(201).send(result.rows)
+        })
+    } catch (error) {
+        res
+        .status(500)
+        .json({ message: "Error in invocation of route /user" })
+    }
+})
+
 //Get all favorited tracks by user id
+//READ
 
 app.get('/user/:id', (req, res) => {
     const user_id = req.params.id
-    console.log(user_id)
+    console.log("getting favorites for user id: " + user_id)
     client.query(`SELECT * FROM favoritestable WHERE user_id='${user_id}'`)
 
     .then(result => {
@@ -28,6 +43,7 @@ app.get('/user/:id', (req, res) => {
 })
 
 
+//UPDATE
 app.patch('/user', (req, res) => {
     console.log(req.body)
     const username = req.body.username;
@@ -37,6 +53,7 @@ app.patch('/user', (req, res) => {
         .catch(error => res.send(error))
 })
 
+//READ
 // Get all user info only if password compare is true
 app.post('/user/info', (req, res) => {
     
@@ -47,7 +64,7 @@ app.post('/user/info', (req, res) => {
         if(err) {
             console.log(err)
         } else {
-            dbPassword = result.rows[0].passcode;
+           dbPassword = result.rows[0].passcode;
             // console.log('This is the user input pass -->', typeof inputPassword, inputPassword);
             // console.log('This is the DB pass -->', typeof dbPassword, dbPassword);
             bcrypt.compare(inputPassword, dbPassword, (err, result) => {
@@ -77,6 +94,7 @@ app.post('/user/info', (req, res) => {
 
 
 //Post to user table
+//CREATE
 app.post('/user', (req, res) => {
     const { passcode } = req.body;
     const { username } = req.body;
@@ -93,7 +111,24 @@ app.post('/user', (req, res) => {
     });  
 })
 
+//DELETE by ID
+app.delete('/user/:id', (req, res)=>{
+    //deconstruct user_id from request parameter 
+    const user_id = req.params.id;
+try {
+    //write an SQL query to delete the user from the database 
+    client.query(`DELETE FROM usertable WHERE id = '${user_id}';`)
+    .then(res.status(201).send(`User with id ${user_id} deleted successfully`))
+} catch (error) {
+    res
+    .status(500)
+    .json({ message: "Error in invocation of route /user" })
+}
+
+})
+
 //post tracks to favoritestable 
+//CREATE
 app.post('/user/tracks', (req, res) => {
     console.log("this is the request body -->", req.body);
     
@@ -110,6 +145,9 @@ app.post('/user/tracks', (req, res) => {
         console.log('error: ', error);
     }
 });
+
+
+
 
 //add login verification route
 

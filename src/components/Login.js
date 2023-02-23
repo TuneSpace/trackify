@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Container } from "react-bootstrap";
 import { UserContext } from "../Context/UserContext";
 import Browse from "../Pages/Browse";
 import Register from "./Register";
@@ -55,9 +56,11 @@ const Login = (props) => {
         })
 
   }
-
+  const body = document.querySelector('body')
+  body.setAttribute('class', 'grad')
   return (
-  <div>
+  <div id='login-div'>
+    <Container id='login'>
     <h1 style={{textAlign:'center'}}>Welcome to Trackify</h1>
     <h2 style={{textAlign:'center'}}>Please Log In</h2>
     <div className="auth-form-container">
@@ -80,7 +83,7 @@ const Login = (props) => {
           id="password"
         />
         
-        <button type="submit" onClick={
+        <button id='login-btn' type="submit" onClick={
           () => <Browse email={email}/>
         }>Log In</button>
       
@@ -90,6 +93,7 @@ const Login = (props) => {
      
     </div>
     <Register className="REGFORM"/>
+    </Container>
   </div>
     
   ) 

@@ -10,7 +10,7 @@ const Results = ({tracks}) => {
 
   //destructre UserContext to extract the values we need
   const {userState} = useContext(UserContext); 
-  console.log(tracks);
+  console.log('this object made it to the results level',tracks);
 
    
   return (
@@ -21,7 +21,7 @@ const Results = ({tracks}) => {
           
                 <div id='results-card' style={{padding:"10px"}} key={track.data.id}>
 
-                    <Card border="success" style={{ width: '18rem' }}>
+                    <Card border="success" style={{ width: '14rem' }}>
                     
                     {/* this dynamically renders a heart so we can break it*/}
                     <svg stroke="currentColor"  fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" fontSize="30" id="favicon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{padding: "5px"}}
@@ -29,7 +29,7 @@ const Results = ({tracks}) => {
                     onClick={(e) => { 
                                       console.log("sending the following data to the  favorites table->","user id:", userState.id, "track id:",track.data.id);
                                       
-                                      //this defines the parameters for the fetch request below
+                                      //From Shelton -> adds reference data from the Spotify API to the database for use in the favorites table
                                       const options = {
                                         method: 'POST',
                                         headers:{ 'Content-Type': 'application/JSON'},
@@ -39,13 +39,13 @@ const Results = ({tracks}) => {
                                           track_name: track.data.albumOfTrack.name,
                                           iPlayerId: track.data.albumOfTrack.id,
                                           imageUrl: track.data.albumOfTrack.coverArt.sources[0].url,
-                                          spotify_url: track.data.albumOfTrack.sharingInfo.shareUrl})
+                                          spotify_url: `https://open.spotify.com/track/${track.data.albumOfTrack.id}`})
                                         } 
 
-                                     //this fetch adds the trackid and userid to the favorites table
+                                     //Fr:Shelton -> this fetch adds the trackid and userid to the favorites table
                                      fetch(`${APIURL}/user/tracks`, options)
 
-                                     //the following changes the heart color to green 
+                                     //Fr: the following changes the heart color to green when the POST is successful
                                      let heartPath = e.target.childNodes[0]
                                      heartPath.setAttribute("fill", "green")
                                       }}
@@ -59,7 +59,7 @@ const Results = ({tracks}) => {
                     <Card.Body>
                     <Card.Title style={{textAlign: 'center'}}>{track.data.name}</Card.Title>
                     <iframe style={{borderRadius: "12px"}} src={`https://open.spotify.com/embed/album/${track.data.albumOfTrack.id}`} width="100%" height="100%" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title={track.data.name}></iframe>
-                    <a variant="success" style={{display:'inline-block'}} href={track.data.albumOfTrack.sharingInfo.shareUrl} 
+                    <a variant="success" style={{display:'inline-block'}} href={`https://open.spotify.com/track/${track.data.albumOfTrack.id}`}
                                                    onClick={(event) => {console.log('Navigating to Spotify', event, track.data.albumOfTrack.sharingInfo)}}
                                                     >Go to Spotify</a>
                    
