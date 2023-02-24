@@ -21,7 +21,7 @@ const Results = ({tracks}) => {
           
                 <div id='results-card' style={{padding:"10px"}} key={track.data.id}>
 
-                    <Card border="success" style={{ width: '14rem' }}>
+                    <Card border="success" style={{ width: '100%' }}>
                     
                     {/* this dynamically renders a heart so we can break it*/}
                     <svg stroke="currentColor"  fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" fontSize="30" id="favicon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{padding: "5px"}}
@@ -55,10 +55,10 @@ const Results = ({tracks}) => {
 
                     
                    {/*add Image, and Body (title, player, and spotify link) to card*/}
-                    <Card.Img variant="top" src={track.data.albumOfTrack.coverArt.sources[0].url} style={{display: 'block', marginLeft: 'auto', marginRight: 'auto', width:"65%" , height: "60%"}} />
+                    {/*<Card.Img variant="top" src={track.data.albumOfTrack.coverArt.sources[0].url} style={{display: 'block', marginLeft: 'auto', marginRight: 'auto', width:"65%" , height: "60%"}} /> */}
                     <Card.Body>
                     <Card.Title style={{textAlign: 'center'}}>{track.data.name}</Card.Title>
-                    <iframe style={{borderRadius: "12px"}} src={`https://open.spotify.com/embed/album/${track.data.albumOfTrack.id}`} width="100%" height="100%" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title={track.data.name}></iframe>
+                    <iframe style={{borderRadius: "12px"}} src={`https://open.spotify.com/embed/track/${track.data.id}?utm_source=generator`} width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title={track.data.name}></iframe>
                     <a variant="success" style={{display:'inline-block'}} href={`https://open.spotify.com/track/${track.data.albumOfTrack.id}`}
                                                    onClick={(event) => {console.log('Navigating to Spotify', event, track.data.albumOfTrack.sharingInfo)}}
                                                     >Go to Spotify</a>

@@ -14,7 +14,7 @@ const Profile = () => {
   console.log('hopefully this is the avatar-->',userState.avatar)
   const [dialogs, setdialogs] = useState(false);
   const [previewAvatar, setPreviewAvatar] = useState(null)
-  const [avatar, setAvatar] = useState(null)
+  const [avatar, setAvatar] = useState(userState.avatar)
   
   //use built in oncrop function to define what happens when you change the previewAvatar state
   const onCrop = (img) => { 
@@ -79,7 +79,7 @@ const Profile = () => {
               objectFit: "cover",
             }}
             //if thre's a previewAvatar, show it, if not pull the avatar from session storage
-            src={previewAvatar ? previewAvatar : sessionStorage.getItem('avatar')}
+            src={previewAvatar ? previewAvatar : userState.avatar}
             alt="avatar"
             onClick={() => setdialogs(true)}
           />

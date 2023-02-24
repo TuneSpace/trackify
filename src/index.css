@@ -17,7 +17,11 @@ body {
 }
 
 #login-div {
-  height: 1000px;
+  height: 100%;
+}
+
+#logout-text {
+  padding-right: 15px;
 }
 
 code {
@@ -86,23 +90,28 @@ button {
   cursor: pointer;
   margin: 5px;
   border: 1.5px solid black;
+  
+}
 
+#app-preview-container {
+  padding: 30px;
+}
+
+button:hover{
+  color: white;
+  text-transform: uppercase;
+ 
+}
+/*
   line-height: 1;
     font-size: 14px;
     padding: 10px;
     outline: none;
     border-radius: 4px;
-  ;
+
+    text-shadow: 1px 1px 2px silver, 0 0 1em lightgreen, 0 0 0.2em lightgreen;
 }
-
-
-
-button:hover{
-  color: black;
-  text-transform: uppercase;
- text-shadow: 1px 1px 2px silver, 0 0 1em lightgreen, 0 0 0.2em lightgreen;
-}
-
+*/
 
 .username {
 text-shadow: 1px 1px 2px green, 0 0 1em lightgreen, 0 0 0.2em lightgreen;
